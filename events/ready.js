@@ -1,14 +1,13 @@
 /**
-   * Evento ready é disparado assim que o bot é conectado ao Discord
-   */
+  * Evento ready é disparado assim que o bot é conectado ao Discord
+*/
 
-module.exports = async (client) => {
-  console.log(`Eu estou online agora, meu nome é ${client.user.username}. Há ${client.users.size} usuario(s) em ${client.guilds.size} servidor(es)!`)
+const status = require('../utils/status');
 
-  client.user.setPresence({
-    status: 'online',
-    game: {
-      name: process.env.GAME
-    }
-  })
+exports.name = 'ready';
+exports.run = (client) => {
+  status.run(client);
+
+  console.log(`O bot foi iniciado com ${client.users.size} usuarios em ${client.guilds.size} servidores`);
 }
+

@@ -39,19 +39,18 @@ module.exports = {
      * Aqui podemos colocar mais algumas configurações do comando.
      */
   conf: {},
-
-  /**
-     * Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
-     */
-  get help () {
-    return {
-      name: 'userinfo',
-      category: 'Info',
-      description: 'Mostra informações sobre o usuário.',
-      usage: 'userinfo'
-    }
-  }
 }
+
+/**
+  * Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
+*/
+
+exports.help = {
+  name: 'userinfo',
+  description: 'Verifica as informações de um usuário',
+  usage: 'userinfo <NICK>',
+  aliases: ['user']
+};
 
 /**
  * Formata a data passada para o padrão do Brasil.

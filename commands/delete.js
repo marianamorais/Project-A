@@ -5,11 +5,17 @@
 
 module.exports = {
   run: (client, message, args) => {
-    if (!message.member) return
+    if (!message.member) return // Verifica se o objeto "member" existe, pode ser que o usuario esteja num chat privado
 
+    /** Verifica se o membro possui permissão para administrar mensagens. */
     if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('você não tem permissão para usar esse comando!')
 
-    var limit = 200
+    /** Verifica se é a quantidade de argumentos correta
+      * Se nenhum argumento for passado então remova 100 mensagens
+      * Se 1 argumento for passado então remove esse numero
+      * Se mais de um argumento for passado então retorne a mensagem.
+      */
+    var limit = 100
     if (args.length === 1) {
       limit = parseInt(args[0])
     } else {
@@ -31,7 +37,7 @@ module.exports = {
     onlyguilds: true
   },
 
-  get help () {
+  get help() {
     return {
       name: 'delete',
       category: 'Moderação',

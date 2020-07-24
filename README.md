@@ -11,8 +11,7 @@
 
 
 ## Um projeto totalmente livre
-Nós da Liga dos Programadores sempre nos preocupamos em ajudar entusiastas em programação ou pessoas que se interessam pelo assunto, assim então decidimos criar projetos de codigo 100% livre para ajudar estudantes ou novatos da área a se familiarizarem com códigos úteis e interessantes!
-  
+
 Fizemos este projeto, visando quem quer se aprofundar mais em bots para o Discord e JavaScript. Combinamos as melhores práticas do JavaScript para criar um bot estruturado simples e funcional que possui funções como Command Handlers, Event Handlers e um comando help bonito e automático!
 
 ## Instalação
