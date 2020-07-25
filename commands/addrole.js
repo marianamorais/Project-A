@@ -7,7 +7,9 @@ module.exports = {
   /** Primeiro o metodo run(client, message, args) será executado pelo nosso arquivo message.js
    * Que passará os argumentos atraves do middleware que programamos.
    */
+
   run: (client, message, args) => {
+    
     // Verificamos se o usuario tem permissão para usar esse comando
     if (!message.member.hasPermission(['MANAGE_MESSAGES', 'ADMINISTRATOR'])) {
       return message.channel.send('> *Você não pode usar esse comando!*')

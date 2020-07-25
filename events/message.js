@@ -1,8 +1,10 @@
+
 /**
  * O Evento message é emitido toda vez que o bot recebe uma mensagem.
  * Podemos usar este evento como uma espécie de middleware para impedir vulnarabilidades ou outras coisas.
  */
-module.exports = async (client, message) => {
+exports.name = 'message';
+exports.run = async (client, message) => {
   /** É uma boa pratica ignorar outros bots. isso faz o bot se auto-ignorar também.
    * E Também não entrara em um loop de spam...
    */
