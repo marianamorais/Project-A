@@ -9,7 +9,6 @@ module.exports = {
    */
 
   run: (client, message, args) => {
-    
     // Verificamos se o usuario tem permissão para usar esse comando
     if (!message.member.hasPermission(['MANAGE_MESSAGES', 'ADMINISTRATOR'])) {
       return message.channel.send('> *Você não pode usar esse comando!*')

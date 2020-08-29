@@ -1,20 +1,31 @@
-const Discord = require('discord.js')
+/**
+ * O comando "ping" mostra a latência do bot.
+*/
+
+const Discord = require('discord.js');
+require('dotenv').config();
 
 module.exports = {
 
-  run: async (client, message, args) => {
-    const embed = new Discord.RichEmbed()
-      .setAuthor(`🏓 ` + parseInt(client.ping) + "ms")
-      .setColor("#74c1ff") //Cor
+	/** Primeiro o metodo run(client, message, args) será executado pelo nosso arquivo message.js
+   * Que passará os argumentos atraves do middleware que programamos.
+  */
 
-    message.channel.send(embed)
-  },
+	run: async (client, message) => {
+		const embed = new Discord.RichEmbed()
+			.setAuthor('🏓 ' + parseInt(client.ping) + 'ms')
+			.setColor(process.env.COLOR);
 
-  conf: {},
-}
+		message.channel.send(embed);
+	},
 
-exports.help = {
-  name: 'ping',
-  description: 'Mostra a latência do bot.',
-  usage: 'ping',
-}
+	conf: {},
+
+	get help() {
+		return {
+			name: 'ping',
+			description: 'O comando "ping" mostra a latência do bot.',
+			usage: 'ping',
+		};
+	},
+};

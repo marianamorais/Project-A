@@ -2,9 +2,10 @@
   "name": "project-a",
   "version": "1.0.0",
   "description": "Um bot para o discord.",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
-    "start": "node ."
+    "start": "node .",
+    "dev": "nodemon ."
   },
   "author": "Liga dos Programadores",
   "license": "Unlicense",
@@ -19,6 +20,7 @@
     "moment": "^2.24.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "standard": "^14.3.4"
   }
 }
