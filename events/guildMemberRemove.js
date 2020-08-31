@@ -1,8 +1,6 @@
 const Discord = require('discord.js');
 
-/**
- * O evento guildMemberAdd é emitido após um membro entrar (ser adicionado em uma guild).
- */
+// O evento guildMemberAdd é emitido após um membro entrar (ser adicionado em uma guild).
 
 module.exports = async (client, member) => {
 	const message = new Discord.RichEmbed()
@@ -13,5 +11,5 @@ module.exports = async (client, member) => {
 		.setFooter('2020 ©Liga dos Programadores')
 		.setTimestamp();
 
-	member.guild.channels.get(process.env.LEAVECHANNEL).send(message).catch();
+	member.guild.channels.get(process.env.LEAVECHANNEL).send(message).catch(console.error);
 };

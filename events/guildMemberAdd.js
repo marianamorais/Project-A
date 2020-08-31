@@ -10,8 +10,12 @@ module.exports = async (client, member) => {
 	const daysSinceCreation = moment().diff(moment(member.user.createdAt), 'days');
 	const isDefaultAvatar = member.user.displayAvatarURL.startsWith('https://discordapp.com/');
 	const domaincount = member.user.username.match(/\b((?=[a-z0-9-]{1,63}\.)(xn--)?[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,63}\b/);
-	if (domaincount > 0 && (isDefaultAvatar || daysSinceCreation < 3)) return (() => { member.send('Olá! você foi kickado automaticamente por suspeita de divulgação em nosso servidor. Contas com menos de 3 dias no discord não podem ter domínios (exemplo twitter.com)').catch(); member.kick('Autokick: Selfbots não são bem vindos').catch(); })();
-
+	if (domaincount > 0 && (isDefaultAvatar || daysSinceCreation < 3)) {
+		member.send('Olá! você foi kickado automaticamente por suspeita de divulgação em nosso servidor. Contas com menos de 3 dias no discord não podem ter domínios (exemplo twitter.com)')
+			.catch(console.error);
+		member.kick('Autokick: Selfbots não são bem vindos')
+			.catch(console.error);
+	}
 	const message = new Discord.RichEmbed()
 		.setThumbnail(member.user.displayAvatarURL)
 		.setColor('RANDOM')
@@ -29,6 +33,6 @@ module.exports = async (client, member) => {
 		.setFooter('2020 ©Liga dos Programadores')
 		.setTimestamp();
 
-	member.guild.channels.get(process.env.JOINCHANNEL).send(join).catch();
-	member.guild.channels.get(process.env.GREETCHANNEL).send(message).catch();
+	member.guild.channels.get(process.env.JOINCHANNEL).send(join).catch(console.error);
+	member.guild.channels.get(process.env.GREETCHANNEL).send(message).catch(console.error);
 };

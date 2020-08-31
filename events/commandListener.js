@@ -9,9 +9,7 @@ require('dotenv').config();
  */
 
 module.exports = async (client, message) => {
-	if (message.author.bot || message.channel.type !== 'text') {
-		return;
-	}
+	if (message.author.bot || message.channel.type !== 'text') return;
 
 	if (message.isMentioned(client.user)) {
 		message.reply('o meu prefixo neste servidor é `!`, para ver o que eu posso fazer use `!help` em <#' + process.env.COMMANDS + '>!');
@@ -35,8 +33,8 @@ module.exports = async (client, message) => {
 
 	const command = getCommand(client, cmd);
 	if (command) {
-		// eslint-disable-next-line no-unused-vars
-		message.delete(1000).catch(err => { });
+		message.delete(1000)
+			.catch(console.error);
 
 		if (cooldown.has(message.author.id)) {
 			const timeSinceLastCommand = Date.now() - cooldown.get(message.author.id);
