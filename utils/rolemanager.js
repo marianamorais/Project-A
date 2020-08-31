@@ -1,80 +1,80 @@
-const fs = require('fs')
+const fs = require('fs');
 
 class roleManager {
-  // Adiciona uma linguagem ao arquivo
-  addrole (name) {
-    var roles = require('../cargos.json')
+	// Adiciona uma linguagem ao arquivo
+	addrole(name) {
+		const roles = require('../cargos.json');
 
-    if (roles.includes(name)) return false
+		if (roles.includes(name)) return false;
 
-    roles.push(name)
+		roles.push(name);
 
-    fs.writeFileSync('cargos.json', JSON.stringify(roles), 'utf8')
-    return true
-  }
+		fs.writeFileSync('cargos.json', JSON.stringify(roles), 'utf8');
+		return true;
+	}
 
-  removerole (name) {
-    var roles = require('../cargos.json')
+	removerole(name) {
+		const roles = require('../cargos.json');
 
-    var idx = roles.indexOf(name)
+		const idx = roles.indexOf(name);
 
-    if (idx === -1) return false
+		if (idx === -1) return false;
 
-    roles.splice(idx, 1)
+		roles.splice(idx, 1);
 
-    fs.writeFileSync('cargos.json', JSON.stringify(roles), 'utf8')
-    return true
-  }
+		fs.writeFileSync('cargos.json', JSON.stringify(roles), 'utf8');
+		return true;
+	}
 
-  setMessage (id, channel) {
-    const emojis = require('../emojiRole.json')
+	setMessage(id, channel) {
+		const emojis = require('../emojiRole.json');
 
-    emojis.id = id
-    emojis.channel = channel
+		emojis.id = id;
+		emojis.channel = channel;
 
-    fs.writeFileSync('emojiRole.json', JSON.stringify(emojis), 'utf8')
-  }
+		fs.writeFileSync('emojiRole.json', JSON.stringify(emojis), 'utf8');
+	}
 
-  addEmoji (emoji, role) {
-    const emojis = require('../emojiRole.json')
+	addEmoji(emoji, role) {
+		const emojis = require('../emojiRole.json');
 
-    emojis.emojis[emoji] = role
+		emojis.emojis[emoji] = role;
 
-    fs.writeFileSync('emojiRole.json', JSON.stringify(emojis), 'utf8')
-  }
+		fs.writeFileSync('emojiRole.json', JSON.stringify(emojis), 'utf8');
+	}
 
-  removeEmoji (emoji) {
-    const emojis = require('../emojiRole.json')
+	removeEmoji(emoji) {
+		const emojis = require('../emojiRole.json');
 
-    if (!emojis.emojis[emoji]) return
+		if (!emojis.emojis[emoji]) return;
 
-    delete emojis.emojis[emoji]
+		delete emojis.emojis[emoji];
 
-    fs.writeFileSync('emojiRole.json', JSON.stringify(emojis), 'utf8')
-  }
+		fs.writeFileSync('emojiRole.json', JSON.stringify(emojis), 'utf8');
+	}
 
-  async updateMsg (client) {
-    const emojis = require('../emojiRole.json')
+	async updateMsg(client) {
+		const emojis = require('../emojiRole.json');
 
-    const channel = client.channels.get(emojis.channel)
-    const message = await channel.fetchMessage(emojis.id)
+		const channel = client.channels.get(emojis.channel);
+		const message = await channel.fetchMessage(emojis.id);
 
-    const content = Object.keys(emojis.emojis).map(emoji => {
-      const role = message.guild.roles.get(emojis.emojis[emoji])
+		const content = Object.keys(emojis.emojis).map(emoji => {
+			const role = message.guild.roles.get(emojis.emojis[emoji]);
 
-      const actualEmoji = client.emojis.get(emoji)
+			const actualEmoji = client.emojis.get(emoji);
 
-      if (!role || !emoji) return this.removeEmoji(emoji)
+			if (!role || !emoji) return this.removeEmoji(emoji);
 
-      const rolename = role.name
+			const rolename = role.name;
 
-      return `Reaja com ${actualEmoji} para obter o cargo **${rolename}**`
-    })
+			return `Reaja com ${actualEmoji} para obter o cargo **${rolename}**`;
+		});
 
-    message.edit(content.join('\n'))
+		message.edit(content.join('\n'));
 
-    Object.keys(emojis.emojis).forEach(emoji => message.react(client.emojis.get(emoji)))
-  }
+		Object.keys(emojis.emojis).forEach(emoji => message.react(client.emojis.get(emoji)));
+	}
 }
 
-module.exports = roleManager
+module.exports = roleManager;

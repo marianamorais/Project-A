@@ -26,15 +26,16 @@ module.exports = {
 			.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
 			.setTimestamp();
 
-		client.channels.get(process.env.SUGESTIONCHANNEL).send(embed)
-			.then(function(msg) {
-				msg.react('👍');
-				msg.react('👎');
+		client.channels
+			.get(process.env.SUGESTIONCHANNEL)
+			.send(embed)
+			.then((m) => {
+				m.react('👍');
+				m.react('👎');
 				message.delete({ timeout: 1000 });
-				message.channel.send(`${message.author}, sua sugestão foi enviada em <#737129466484097075> 📬`).then(msg => msg.delete(5000));
-			}).catch(function(error) {
-				console.log(error);
-			});
+				message.channel.send(`${message.author}, sua sugestão foi enviada em <#737129466484097075> 📬`)
+					.then(m => m.delete(5000));
+			}).catch(console.log);
 	},
 
 	conf: {},

@@ -1,4 +1,5 @@
-const fs = require('fs'); // Definindo constante fs para inicialização de eventos
+// Definindo constante fs para inicialização de eventos
+const fs = require('fs');
 
 /**
  * Search for all files with the given extension

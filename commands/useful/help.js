@@ -15,7 +15,7 @@ module.exports = {
 			.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
 			.setTimestamp();
 
-		if(message.channel.type !== 'dm') {
+		if (message.channel.type !== 'dm') {
 			const sucess = new Discord.RichEmbed()
 				.setColor(process.env.COLOR)
 				.setAuthor('Minha lista de comandos 💡')
@@ -36,46 +36,48 @@ module.exports = {
 			.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
 			.setTimestamp();
 
-		message.author.send(embedList).catch(err => message.channel.send(error)).then(async msg => {
-			await msg.react('📋');
-			await msg.react('💻');
-			await msg.react('⚙️');
-			await msg.react('🔒');
-			await msg.react('↩');
+		message.author.send(embedList)
+			.catch(message.channel.send(error))
+			.then(async msg => {
+				await msg.react('📋');
+				await msg.react('💻');
+				await msg.react('⚙️');
+				await msg.react('🔒');
+				await msg.react('↩');
 
-			const info = (reaction, user) => reaction.emoji.name === '📋' && user.id === message.author.id;
-			const codando = (reaction, user) => reaction.emoji.name === '💻' && user.id === message.author.id;
-			const uteis = (reaction, user) => reaction.emoji.name === '⚙️' && user.id === message.author.id;
-			const mod = (reaction, user) => reaction.emoji.name === '🔹' && user.id === message.author.id;
-			const back = (reaction, user) => reaction.emoji.name === '🔙' && user.id === message.author.id;
+				const info = (reaction, user) => reaction.emoji.name === '📋' && user.id === message.author.id;
+				const codando = (reaction, user) => reaction.emoji.name === '💻' && user.id === message.author.id;
+				const uteis = (reaction, user) => reaction.emoji.name === '⚙️' && user.id === message.author.id;
+				const mod = (reaction, user) => reaction.emoji.name === '🔹' && user.id === message.author.id;
+				const back = (reaction, user) => reaction.emoji.name === '🔙' && user.id === message.author.id;
 
-			const infoL = msg.createReactionCollector(info);
-			const codandoL = msg.createReactionCollector(codando);
-			const uteisL = msg.createReactionCollector(uteis);
-			const modL = msg.createReactionCollector(mod);
+				const infoL = msg.createReactionCollector(info);
+				const codandoL = msg.createReactionCollector(codando);
+				const uteisL = msg.createReactionCollector(uteis);
+				const modL = msg.createReactionCollector(mod);
 
-			const backL = msg.createReactionCollector(back);
+				const backL = msg.createReactionCollector(back);
 
-			backL.on('collect', r => {
-				const embedBack = new Discord.RichEmbed()
-					.setColor(process.env.COLOR)
-					.setAuthor('Minha lista de comandos 💡')
-					.setDescription('Para saber sobre cada um, reaja ao emoji de cada categoria.')
-					.addField('📋 **Informações**', '*Comandos que mostram algumas informações importantes.*')
-					.addField('💻 **Codando**', '*Comandos que auxiliam ao codificar.*')
-					.addField('⚙️ **Úteis**', '*Comandos que ajudam o servidor.*')
-					.addField('🔒 **Mod**', '*Comandos da staff.*')
-					.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
-					.setTimestamp();
-				msg.edit(embedBack);
+				backL.on('collect', () => {
+					const embedBack = new Discord.RichEmbed()
+						.setColor(process.env.COLOR)
+						.setAuthor('Minha lista de comandos 💡')
+						.setDescription('Para saber sobre cada um, reaja ao emoji de cada categoria.')
+						.addField('📋 **Informações**', '*Comandos que mostram algumas informações importantes.*')
+						.addField('💻 **Codando**', '*Comandos que auxiliam ao codificar.*')
+						.addField('⚙️ **Úteis**', '*Comandos que ajudam o servidor.*')
+						.addField('🔒 **Mod**', '*Comandos da staff.*')
+						.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
+						.setTimestamp();
+					msg.edit(embedBack);
 
-			});
+				});
 
-			infoL.on('collect', r => {
-				const embedInfo = new Discord.RichEmbed()
-					.setColor(process.env.COLOR)
-					.setAuthor('Minha lista de comandos 💡')
-					.setDescription(`⭐ **Info**
+				infoL.on('collect', () => {
+					const embedInfo = new Discord.RichEmbed()
+						.setColor(process.env.COLOR)
+						.setAuthor('Minha lista de comandos 💡')
+						.setDescription(`⭐ **Info**
             !avatar - Exibe o avatar.
             !botinfo - Mostra informações do bot.
             !serverinfo - Mostra informações do servidor.
@@ -84,16 +86,16 @@ module.exports = {
             !notify - Recebe o cargo novidades/ Remove o cargo.
             !userinfo - Mostra informações do usuário.
           `)
-					.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
-					.setTimestamp();
-				msg.edit(embedInfo);
-			});
+						.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
+						.setTimestamp();
+					msg.edit(embedInfo);
+				});
 
-			codandoL.on('collect', r => {
-				const embedCod = new Discord.RichEmbed()
-					.setColor(process.env.COLOR)
-					.setAuthor('Minha lista de comandos 💡')
-					.setDescription(`⭐ **Info**
+				codandoL.on('collect', () => {
+					const embedCod = new Discord.RichEmbed()
+						.setColor(process.env.COLOR)
+						.setAuthor('Minha lista de comandos 💡')
+						.setDescription(`⭐ **Info**
             !avatar - Exibe o avatar.
             !botinfo - Mostra informações do bot.
             !serverinfo - Mostra informações do servidor.
@@ -102,16 +104,16 @@ module.exports = {
             !notify - Recebe o cargo novidades/ Remove o cargo.
             !userinfo - Mostra informações do usuário.
           `)
-					.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
-					.setTimestamp();
-				msg.edit(embedCod);
-			});
+						.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
+						.setTimestamp();
+					msg.edit(embedCod);
+				});
 
-			uteisL.on('collect', r => {
-				const embedUtil = new Discord.RichEmbed()
-					.setColor(process.env.COLOR)
-					.setAuthor('Minha lista de comandos 💡')
-					.setDescription(`⭐ **Info**
+				uteisL.on('collect', () => {
+					const embedUtil = new Discord.RichEmbed()
+						.setColor(process.env.COLOR)
+						.setAuthor('Minha lista de comandos 💡')
+						.setDescription(`⭐ **Info**
             !avatar - Exibe o avatar.
             !botinfo - Mostra informações do bot.
             !serverinfo - Mostra informações do servidor.
@@ -120,16 +122,16 @@ module.exports = {
             !notify - Recebe o cargo novidades/ Remove o cargo.
             !userinfo - Mostra informações do usuário.
           `)
-					.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
-					.setTimestamp();
-				msg.edit(embedUtil);
-			});
+						.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
+						.setTimestamp();
+					msg.edit(embedUtil);
+				});
 
-			modL.on('collect', r => {
-				const embedMod = new Discord.RichEmbed()
-					.setColor(process.env.COLOR)
-					.setAuthor('Minha lista de comandos 💡')
-					.setDescription(`⭐ **Info**
+				modL.on('collect', () => {
+					const embedMod = new Discord.RichEmbed()
+						.setColor(process.env.COLOR)
+						.setAuthor('Minha lista de comandos 💡')
+						.setDescription(`⭐ **Info**
             !avatar - Exibe o avatar.
             !botinfo - Mostra informações do bot.
             !serverinfo - Mostra informações do servidor.
@@ -138,11 +140,11 @@ module.exports = {
             !notify - Recebe o cargo novidades/ Remove o cargo.
             !userinfo - Mostra informações do usuário.
           `)
-					.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
-					.setTimestamp();
-				msg.edit(embedMod);
+						.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
+						.setTimestamp();
+					msg.edit(embedMod);
+				});
 			});
-		});
 	},
 
 	conf: {},

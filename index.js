@@ -24,7 +24,8 @@ function start() {
 	loadEvents('./events');
 
 	console.log(c.blue('Conectando o bot ...'));
-	client.login(process.env.AUTH_TOKEN);
+	client.login(process.env.AUTH_TOKEN)
+		.catch(console.error);
 }
 
 /**

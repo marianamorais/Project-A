@@ -33,6 +33,7 @@ module.exports = {
 	get help() {
 		return {
 			name: 'avatar',
+			category: 'info',
 			description: 'Mostra o avatar de um usuário',
 			usage: 'avatar',
 		};

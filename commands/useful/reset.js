@@ -1,7 +1,7 @@
 // O comando "reset" serve para usuarios que querem resetar sua apresentação.
 
 module.exports = {
-	run: async (client, message, args) => {
+	run: async (client, message) => {
 		if (message.member.roles.exists('name', 'Apresentado')) {
 			// Registra e checa se o canal Apresente-se existe
 			const channel = message.guild.channels.find('id', process.env.APRESENTACAO);
@@ -15,14 +15,19 @@ module.exports = {
 				// Verifica se a variavel acima tem elementos
 				if (usrMessages.array().length !== 0) {
 					// se existirem mensagens do usuario...
-					usrMessages.deleteAll(); // remove todas as mensagens
-					message.member.removeRole(message.guild.roles.find('name', 'Apresentado')); // remove o cargo/role
-					message.reply('sua apresentação foi removida!'); // envia uma mensagem
+					// remove todas as mensagens
+					usrMessages.deleteAll();
+					// remove o cargo/rolea
+					message.member.removeRole(message.guild.roles.find('name', 'Apresentado'));
+					// envia uma mensagem
+					message.reply('sua apresentação foi removida!');
 				}
 				else {
 					// se nao existirem mensagens do usuario...
-					message.member.removeRole(message.guild.roles.find('name', 'Apresentado')); // remove o cargo/role
-					message.reply(`não encontrei nenhuma mensagem sua no ${channel}.`); // envia uma mensagem
+					// remove o cargo/role
+					message.member.removeRole(message.guild.roles.find('name', 'Apresentado'));
+					// envia uma mensagem
+					message.reply(`não encontrei nenhuma mensagem sua no ${channel}.`);
 				}
 			}
 			else {
