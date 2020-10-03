@@ -33,7 +33,10 @@ module.exports = {
 			.catch(() => { });
 	},
 
-	conf: {},
+	conf: {
+		// Comando deve ser usado apenas dentro de um servidor
+		onlyguilds: true,
+	},
 
 	/**
     * Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
@@ -42,7 +45,7 @@ module.exports = {
 	get help() {
 		return {
 			name: 'invite',
-			category: 'Info',
+			category: 'info',
 			description: 'Mostra quem criou o convite e a quantidade de vezes usada.',
 			usage: 'invite',
 		};

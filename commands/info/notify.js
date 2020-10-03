@@ -51,7 +51,10 @@ module.exports = {
 		}
 	},
 
-	conf: {},
+	conf: {
+	// Comando deve ser usado apenas dentro de um servidor
+		onlyguilds: true,
+	},
 
 	/**
    * Aqui exportamos Ajuda do comando como o seu nome categoria, descrição, etc...
@@ -60,6 +63,7 @@ module.exports = {
 	get help() {
 		return {
 			name: 'notify',
+			category: 'info',
 			description: 'O Comando "notify" adiciona o cargo de "Novidades" aos membros.',
 			usage: 'notify',
 		};

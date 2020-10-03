@@ -44,6 +44,7 @@ module.exports = {
 	get help() {
 		return {
 			name: 'botinfo',
+			category: 'info',
 			description: 'Mostra informações sobre o bot',
 			usage: 'botinfo',
 		};

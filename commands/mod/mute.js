@@ -1,5 +1,5 @@
 /**
- * O Comando "mute" mutará determinado usuário temporariamente.
+	* O Comando "mute" mutará determinado usuário temporariamente.
 */
 
 const Discord = require('discord.js');

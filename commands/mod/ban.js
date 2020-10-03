@@ -8,7 +8,7 @@ module.exports = {
 
 	/** Primeiro o metodo run(client, message, args) será executado pelo nosso arquivo message.js
    	* Que passará os argumentos atraves do middleware que programamos.
-   	*/
+  */
 
 	run: async function(client, message, args) {
 		const user = message.mentions.users.first() || args[0];

@@ -24,6 +24,7 @@ module.exports = {
 	get help() {
 		return {
 			name: 'ping',
+			category: 'info',
 			description: 'O comando "ping" mostra a latência do bot.',
 			usage: 'ping',
 		};

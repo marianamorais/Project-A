@@ -28,7 +28,6 @@ module.exports = {
 			.addField('📄  **Apelido**', `${member.nickname !== null ? `Nickname: ${member.nickname}` : 'Nenhum'}`, true)
 			.addField('❔  **É um bot?**', `${bot}`, true)
 			.addField('⚪️ **Status**', `${status[member.user.presence.status]}`, true)
-			.addField('🎮 **Jogando**', `${member.user.presence.game ? `${member.user.presence.game.name}` : ' Nada'}`, true)
 			.addField(`💼 **Cargo(s)** [${member.roles.filter(r => r.id !== message.guild.id).map(roles => `\`${roles.name}\``).length}]`, `${member.roles.filter(r => r.id !== message.guild.id).map(roles => `<@&${roles.id}>`).join(' **|** ') || 'Nenhum cargo'}`)
 			.addField('**🎉 Entrou no Discord em**', formatDate('DD/MM/YYYY, às HH:mm:ss', member.user.createdAt), true)
 			.addField('**🙌 Entrou no servidor em**', formatDate('DD/MM/YYYY, às HH:mm:ss', member.joinedAt), true)
@@ -51,9 +50,9 @@ module.exports = {
 	get help() {
 		return {
 			name: 'userinfo',
+			category: 'info',
 			description: 'Verifica as informações de um usuário',
-			usage: 'userinfo <NICK>',
-			aliases: ['user'],
+			usage: 'userinfo',
 		};
 	},
 };

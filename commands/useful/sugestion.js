@@ -1,5 +1,5 @@
 /**
- * O Comando "sugestion" irá receber a sugestao do membro
+ * O Comando "sugestion" irá receber a sugestão do membro e enviá-la para um canal expecífico.
 */
 
 const Discord = require('discord.js');
@@ -15,7 +15,7 @@ module.exports = {
 
 		const msg = args.join(' ');
 		if (!msg) {
-			message.channel.send(`${message.author}, digite uma sugestão! :mailbox_with_no_mail:`);
+			message.channel.send(`${message.author}, digite: \`\`!sugestion [sua sugestão]\`\` :mailbox_with_no_mail:`);
 			return undefined;
 		}
 
@@ -26,15 +26,12 @@ module.exports = {
 			.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
 			.setTimestamp();
 
-		client.channels
-			.get(process.env.SUGESTIONCHANNEL)
-			.send(embed)
+		client.channels.get(process.env.SUGESTIONSCHANNEL).send(embed)
 			.then((m) => {
 				m.react('👍');
 				m.react('👎');
 				message.delete({ timeout: 1000 });
-				message.channel.send(`${message.author}, sua sugestão foi enviada em <#737129466484097075> 📬`)
-					.then(m => m.delete(5000));
+				message.channel.send(`${message.author}, sua sugestão foi enviada no canal de sugestões! 📬 A staff irá analizar e logo irá enviar um feedback :)`);
 			}).catch(console.log);
 	},
 

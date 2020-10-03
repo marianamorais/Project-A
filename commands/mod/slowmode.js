@@ -13,10 +13,10 @@ module.exports = {
 		if (!message.member.hasPermission(['MANAGE_MESSAGES', 'ADMINISTRATOR'])) { return message.channel.send('> Você não tem permissão para usar esse comando! 🤨'); }
 
 		const toslowmode = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-		if (!toslowmode) return message.channel.send(`${message.author.username}, o uso correto do comando é: \`\`!slowmode [tempo]\`\` .😅`).then(msg => msg.delete(5000));
+		if (!toslowmode) return message.channel.send(`${message.author}, o uso correto do comando é: \`\`!slowmode [0, 5, 10, 15, 60, etc]\`\` .`).then(msg => msg.delete(5000));
 
 		const slowmodetime = args[1];
-		if (!slowmodetime) {return message.channel.send(`${message.author.username}, insira o tempo \`\`[0, 5, 10, 15, 60, etc]\`\` .😅`).then(msg => msg.delete(5000));}
+		if (!slowmodetime) {return message.channel.send(`${message.author}, insira o tempo \`\`[0, 5, 10, 15, 60, etc]\`\` .`).then(msg => msg.delete(5000));}
 
 		if(toslowmode) {
 			message.channel.setRateLimitPerUser(args[0]);

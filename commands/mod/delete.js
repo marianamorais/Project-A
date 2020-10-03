@@ -45,7 +45,7 @@ module.exports = {
 	get help() {
 		return {
 			name: 'delete',
-			category: 'Moderação',
+			category: 'mod',
 			description: 'O Comando "delete" apagará determinada quantidade de mensagens.',
 			usage: 'delete [1 - 200]',
 			admin: true,

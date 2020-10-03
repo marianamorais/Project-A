@@ -51,7 +51,10 @@ module.exports = {
    * Aqui podemos colocar mais algumas configurações do comando.
   */
 
-	conf: {},
+	conf: {
+	// Comando deve ser usado apenas dentro de um servidor
+		onlyguilds: true,
+	},
 
 	/**
    * Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
@@ -60,9 +63,9 @@ module.exports = {
 	get help() {
 		return {
 			name: 'serverinfo',
+			category: 'info',
 			description: 'O Comando "serverinfo" mostrará informações do servidor.',
 			usage: 'serverinfo',
-			aliases: ['server'],
 		};
 	},
 };

@@ -1,4 +1,4 @@
-/** O Comando Help envia uma mensagem de ajuda contendo as informações dos comandos. */
+/** O Comando "Help" envia uma mensagem de ajuda contendo as informações dos comandos. */
 
 const Discord = require('discord.js');
 require('dotenv').config();
@@ -7,15 +7,18 @@ module.exports = {
 
 	run: (client, message) => {
 
-		const error = new Discord.RichEmbed()
-			.setColor(process.env.COLOR)
-			.setAuthor('Não foi possível')
-			.setDescription(`${message.author}, não consigo enviar mensagem para você, ative suas mensagens diretas!`)
-			.setThumbnail(client.user.avatarURL)
-			.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
-			.setTimestamp();
-
 		if (message.channel.type !== 'dm') {
+			const error = new Discord.RichEmbed()
+				.setColor(process.env.COLOR)
+				.setAuthor('Não foi possível')
+				.setDescription(`${message.author}, não consigo enviar mensagem para você, ative suas mensagens diretas!`)
+				.setThumbnail(client.user.avatarURL)
+				.setFooter('2020 © Liga dos Programadores', process.env.SERVERIMAGE)
+				.setTimestamp();
+			message.channel.send(error);
+		}
+
+		if (message.channel.type === 'dm') {
 			const sucess = new Discord.RichEmbed()
 				.setColor(process.env.COLOR)
 				.setAuthor('Minha lista de comandos 💡')
