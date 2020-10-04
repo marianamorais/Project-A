@@ -58,6 +58,7 @@ module.exports = {
 
 		if(!message.member.roles.has(muterole)) {
 			setTimeout(function() {
+				if (!tomute.roles.has(muterole.id)) return; // <-- se user não tem cargo de mutado, retorne
 				tomute.removeRole(muterole.id);
 				msg.guild.channels.get('735930352987799623').send(`<@${tomute.id}> **você foi desmutado! Comporte-se agora. 😁**`);
 			}, ms(mutetime));
